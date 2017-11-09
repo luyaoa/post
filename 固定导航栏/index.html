@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			img {
+				vertical-align: top;
+			}
+			
+			.main {
+				margin: 0 auto;
+				width: 1000px;
+				padding-top: 10px;
+			}
+			
+			.fixed {
+				position: fixed;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<script src="./jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		
+		$(function(){
+			
+			// 在页面中 随着滚动条滚动的时候  onscroll事件，看看scrollTop 大于等于
+			// topPart的高度 让navBar 导航 变成固定定位
+			// 注意: 当导航变成固定定位的时候  需要将内容区域和头部区域之间流出来一部分空间
+			// 这个空间正好是 导航的高度
+			
+			// 在滚动事件中
+			$(window).scroll(function(){
+				
+				if($(this).scrollTop() >= $("#topPart").outerHeight()) {
+					
+					$("#navBar").addClass("fixed")
+					$("#topPart").css("margin-bottom",$("#navBar").outerHeight())
+					
+				} else {
+					$("#navBar").removeClass("fixed")
+					$("#topPart").css("margin-bottom","")
+				}
+			})
+			
+		})
+		
+	</script>
+	<body>
+		<div class="top" id="topPart">
+			<img src="images/top.png" alt="">
+		</div>
+		<div class="nav" id="navBar" style="margin-bottom: 0px;">
+			<img src="images/nav.png" alt="">
+		</div>
+		<div class="main" id="mainPart">
+			<img src="images/main.png" alt="">
+		</div>
+	</body>
+
+</html>
