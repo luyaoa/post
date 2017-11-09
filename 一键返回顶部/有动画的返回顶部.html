@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            height: 5000px;
+        }
+        #toTop {
+            width: 120px;
+            height: 120px;
+            background: url(img/0001.jpg);
+            position: fixed;
+            right: 50px;
+            bottom:50px;
+            display: none;
+        }
+        #toTop:hover {
+            background:url(img/0001.jpg);
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+//          当我们滚动到500px的时候，才显示小火箭
+
+            $(window).scroll(function () {
+
+                var winTop = $(window).scrollTop();
+                if( winTop >= 500 ){
+                    $('#toTop').show();
+                }else{
+                    $('#toTop').hide();
+                }
+
+            });
+
+            $('#toTop').click(function () {
+//              一瞬间返回顶部
+//              $(window).scrollTop(0);
+//              有动画的返回顶部，固定写法
+                $('html,body').stop().animate({ scrollTop : 0 });
+            });
+
+
+
+        });
+    </script>
+</head>
+<body>
+    <a href="javascript:;" id="toTop"></a>
+</body>
+</html>
